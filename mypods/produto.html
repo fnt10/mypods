@@ -149,10 +149,10 @@
 </main>
 
 <!-- Modal do Carrinho -->
-<div id="cartModal" class="modal">
+<div id="cartModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
   <div class="modal-content cart-modal">
     <div class="modal-header">
-      <h2>🛒 Seu Carrinho</h2>
+      <h2 id="cartTitle">🛒 Seu Carrinho</h2>
       <button class="close-btn" onclick="closeCart()">&times;</button>
     </div>
     <div id="cartItems" class="cart-items"></div>
