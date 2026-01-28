@@ -1,0 +1,55 @@
+<!--
+███████╗██╗   ██╗██████╗ ██╗      █████╗ ███████╗
+██╔════╝██║   ██║██╔══██╗██║     ██╔══██╗██╔════╝
+█████╗  ██║   ██║██████╔╝██║     ███████║███████╗
+██╔══╝  ██║   ██║██╔══██╗██║     ██╔══██║╚════██║
+██║     ╚██████╔╝██║  ██║███████╗██║  ██║███████║
+╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Teste do Carrinho</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; }
+    .modal.open { display: flex; }
+    .modal-content { background: white; padding: 20px; border-radius: 10px; width: 90%; max-width: 500px; }
+  </style>
+</head>
+<body>
+  <h1>Teste do Carrinho</h1>
+  <button id="cartBtn" onclick="openCart()">Abrir Carrinho</button>
+  
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <h2>Seu Carrinho</h2>
+      <p>Este é um teste do modal.</p>
+      <button onclick="closeCart()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    console.log('Script iniciado');
+    
+    function openCart() {
+      console.log('openCart chamada');
+      const modal = document.getElementById('cartModal');
+      console.log('Modal:', modal);
+      if (modal) {
+        modal.style.display = 'flex';
+        console.log('Modal display set to flex');
+      }
+    }
+    
+    function closeCart() {
+      console.log('closeCart chamada');
+      const modal = document.getElementById('cartModal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

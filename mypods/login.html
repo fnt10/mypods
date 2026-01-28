@@ -1,0 +1,110 @@
+<!--
+███████╗██╗   ██╗██████╗ ██╗      █████╗ ███████╗
+██╔════╝██║   ██║██╔══██╗██║     ██╔══██╗██╔════╝
+█████╗  ██║   ██║██████╔╝██║     ███████║███████╗
+██╔══╝  ██║   ██║██╔══██╗██║     ██╔══██║╚════██║
+██║     ╚██████╔╝██║  ██║███████╗██║  ██║███████║
+╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - MyPods</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+  <div class="header-content">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="img/logo.png?v=2" alt="Logo MyPods" class="header-logo" onclick="window.location.href='index.html'">
+    </div>
+
+    <!-- Espaço vazio (sem busca) -->
+    <div style="flex: 1;"></div>
+
+    <!-- Ações -->
+    <div class="header-actions">
+      <span id="userGreeting" class="user-greeting"></span>
+      <button class="icon-btn" id="loginBtn" onclick="goLogin()">👤</button>
+      <button class="icon-btn" id="profileBtn" onclick="window.location.href='profile.html'" style="display: none;">👤</button>
+      <button class="icon-btn" id="ordersBtn" onclick="window.location.href='orders.html'" style="display: none;">📦</button>
+      <button class="icon-btn cart-btn" onclick="openCart()">
+        🛒<span id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+  <main class="container auth-page">
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <button class="tab-btn active" onclick="switchTab('login')">Entrar</button>
+        <button class="tab-btn" onclick="switchTab('register')">Criar conta</button>
+        <button class="tab-btn admin-tab-btn" onclick="window.location.href='admin.html'" style="margin-left: auto;">Admin</button>
+      </div>
+
+      <!-- Formulário de Login -->
+      <div id="loginForm" class="auth-form active">
+        <h2>Bem-vindo de volta!</h2>
+        <p class="auth-subtitle">Entre para continuar suas compras</p>
+        
+        <form onsubmit="handleLogin(event)">
+          <div class="form-group">
+            <label for="loginEmail">E-mail</label>
+            <input type="email" id="loginEmail" required placeholder="seu@email.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="loginPassword">Senha</label>
+            <input type="password" id="loginPassword" required placeholder="••••••••">
+          </div>
+          
+          <button type="submit" class="btn-primary">Entrar</button>
+        </form>
+      </div>
+
+      <!-- Formulário de Registro -->
+      <div id="registerForm" class="auth-form">
+        <h2>Crie sua conta</h2>
+        <p class="auth-subtitle">Junte-se à comunidade MyPods</p>
+        
+        <form onsubmit="handleRegister(event)">
+          <div class="form-group">
+            <label for="registerName">Nome completo</label>
+            <input type="text" id="registerName" required placeholder="Seu nome">
+          </div>
+          
+          <div class="form-group">
+            <label for="registerEmail">E-mail</label>
+            <input type="email" id="registerEmail" required placeholder="seu@email.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="registerPassword">Senha</label>
+            <input type="password" id="registerPassword" required placeholder="Mínimo 6 caracteres" minlength="6">
+          </div>
+          
+          <div class="form-group">
+            <label for="registerPhone">Telefone</label>
+            <input type="tel" id="registerPhone" required placeholder="(00) 00000-0000">
+          </div>
+
+          <div class="form-group">
+            <label for="registerCPF">CPF</label>
+            <input type="text" id="registerCPF" placeholder="000.000.000-00">
+          </div>
+
+          <button type="submit" class="btn-primary">Criar conta</button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="js/script.js"></script>
+</body>
+</html>

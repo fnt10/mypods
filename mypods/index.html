@@ -1,0 +1,117 @@
+<!--
+███████╗██╗   ██╗██████╗ ██╗      █████╗ ███████╗
+██╔════╝██║   ██║██╔══██╗██║     ██╔══██╗██╔════╝
+█████╗  ██║   ██║██████╔╝██║     ███████║███████╗
+██╔══╝  ██║   ██║██╔══██╗██║     ██╔══██║╚════██║
+██║     ╚██████╔╝██║  ██║███████╗██║  ██║███████║
+╚═╝      ╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚══════╝
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="MyPods - A melhor loja de pods e vapes. Produtos de qualidade com os melhores preços.">
+<title>MyPods - Loja de Pods e Vapes</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <!-- Logo -->
+    <div class="logo-container">
+      <img src="img/logo.png?v=2" alt="Logo MyPods" class="header-logo" onclick="window.location.href='index.html'">
+    </div>
+
+    <!-- Busca -->
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Buscar produtos..." onkeyup="filterProducts()">
+      <span class="search-icon">🔍</span>
+      <div id="searchSuggestions" class="search-suggestions" style="display:none;"></div>
+    </div>
+
+    <!-- Ações -->
+    <div class="header-actions">
+      <span id="userGreeting" class="user-greeting"></span>
+      <button class="icon-btn" id="themeToggle" onclick="toggleDarkMode()" title="Alternar Tema">🌙</button>
+      <button class="icon-btn" id="loginBtn" onclick="goLogin()">👤</button>
+      <button class="icon-btn" id="profileBtn" onclick="window.location.href='profile.html'" style="display: none;">👤</button>
+      <button class="icon-btn" id="ordersBtn" onclick="window.location.href='orders.html'" style="display: none;">📦</button>
+      <button class="icon-btn cart-btn" onclick="openCart()">
+        🛒<span id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- BANNER HERO COM POD 3D GIRANTE -->
+<section class="hero-banner">
+  <div class="hero-background"></div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1 class="hero-title">MyPods Premium</h1>
+      <p class="hero-subtitle">Experiência única em cada trago</p>
+      <p class="hero-description">Descubra a próxima geração de pods com tecnologia avançada e design inovador</p>
+      <button class="hero-cta" onclick="document.querySelector('.products-header').scrollIntoView({behavior: 'smooth'})">Explorar Produtos</button>
+    </div>
+    <div class="hero-pod-container">
+      <div class="pod-3d" id="pod3D">
+        <div class="pod-wrapper">
+          <img src="img/podrolag.png" alt="Pod Premium MyPods" class="pod-image">
+        </div>
+      </div>
+      <div class="pod-glow"></div>
+    </div>
+  </div>
+</section>
+
+<main class="container">
+  <div id="productsHeader" class="products-header">
+    <h1>Nossos Produtos</h1>
+    <p id="productsCount" class="products-count"></p>
+  </div>
+  
+  <!-- Filtros -->
+  <div class="filters-section">
+    <div class="filters">
+      <select id="brandFilter" onchange="filterProducts()">
+        <option value="all">Todas as marcas</option>
+        <option value="marcaA">Marca A</option>
+        <option value="marcaB">Marca B</option>
+      </select>
+      <select id="priceFilter" onchange="filterProducts()">
+        <option value="all">Todos os preços</option>
+        <option value="0-100">Até R$ 100</option>
+        <option value="100-200">R$ 100 - R$ 200</option>
+        <option value="200-300">R$ 200 - R$ 300</option>
+        <option value="300+">Acima de R$ 300</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="products" id="productList"></div>
+</main>
+
+<!-- Modal do Carrinho -->
+<div id="cartModal" class="modal">
+  <div class="modal-content cart-modal">
+    <div class="modal-header">
+      <h2>🛒 Seu Carrinho</h2>
+      <button class="close-btn" onclick="closeCart()">&times;</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <strong>Total: <span id="cartTotal">R$ 0,00</span></strong>
+      </div>
+      <button class="btn-primary" onclick="goToCheckout()">Finalizar Compra</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="js/script.js"></script>
+</body>
+</html>
